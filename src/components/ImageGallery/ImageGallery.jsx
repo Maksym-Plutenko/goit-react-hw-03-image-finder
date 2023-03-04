@@ -14,6 +14,7 @@ class ImageGallery extends Component {
             id={img.id}
             smallpic={img.webformatURL}
             largepic={img.largeImageURL}
+            onClick={this.props.onClick}
           />
         ))}
       </ul>
@@ -27,6 +28,7 @@ ImageGallery.propTypes = {
       id: PropTypes.number.isRequired,
       webformatURL: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
+      onClick:PropTypes.func,
     })
   ),
 };

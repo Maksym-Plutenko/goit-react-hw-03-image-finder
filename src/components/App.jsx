@@ -5,6 +5,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Loader } from './Loader/Loader';
 import { Button } from './Button/Button';
+import { Modal } from './Modal/Modal';
 
 class App extends Component {
   state = {
@@ -12,11 +13,9 @@ class App extends Component {
     request: '',
     page: 1,
     isLoading: false,
+    modalMode: false,
+    modalPicture: '',
   };
-
-  // async getPic() {
-  //   await apiHandler.findPictures('cat', 1);
-  // }
 
   findPictures = async request => {
     const requestTrimmed = request.trim();
@@ -44,6 +43,20 @@ class App extends Component {
     });
   };
 
+  modalOn = picture => {
+    // console.log(picture);
+    this.setState({
+      modalMode: true,
+      modalPicture: picture,
+    });
+  };
+
+  modalOff = () => {
+    this.setState({
+      modalMode: false,
+    });
+  };
+
   render() {
     return (
       <div
@@ -60,17 +73,20 @@ class App extends Component {
           // gridGap: 16,
           // paddingBottom: 24,
         }}
-        // onClick={this.getPic}
       >
         <Searchbar onSubmit={this.findPictures} />
+
         {this.state.isLoading ? (
           <Loader />
         ) : (
-          <ImageGallery pictures={this.state.pictures} />
+          <ImageGallery pictures={this.state.pictures} onClick={this.modalOn} />
         )}
+
         {this.state.pictures.length > 0 && (
           <Button onClick={this.morePictures} />
         )}
+
+        {this.state.modalMode && <Modal picture={this.state.modalPicture} close={this.modalOff} />}
       </div>
     );
   }
