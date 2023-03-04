@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { HiMagnifyingGlass } from "react-icons/hi2";
+
 import css from './Searchbar.module.css';
 
 class Searchbar extends Component {
@@ -24,7 +26,8 @@ class Searchbar extends Component {
       <header className={css.searchbar}>
         <form className={css.form} onSubmit={this.submitHandler}>
           <button type="submit" className={css.button}>
-            <span className={css.buttonLabel}>Search</span>
+            <span className={css.buttonLabel}> Search </span>
+            <HiMagnifyingGlass className={css.ico}/>
           </button>
 
           <input

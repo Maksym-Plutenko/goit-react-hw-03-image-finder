@@ -44,7 +44,6 @@ class App extends Component {
   };
 
   modalOn = picture => {
-    // console.log(picture);
     this.setState({
       modalMode: true,
       modalPicture: picture,
@@ -68,10 +67,7 @@ class App extends Component {
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
-          // display: 'grid',
-          // gridTemplateColumns: 1,
-          // gridGap: 16,
-          // paddingBottom: 24,
+          paddingBottom: 24,
         }}
       >
         <Searchbar onSubmit={this.findPictures} />
@@ -86,7 +82,9 @@ class App extends Component {
           <Button onClick={this.morePictures} />
         )}
 
-        {this.state.modalMode && <Modal picture={this.state.modalPicture} close={this.modalOff} />}
+        {this.state.modalMode && (
+          <Modal picture={this.state.modalPicture} close={this.modalOff} />
+        )}
       </div>
     );
   }

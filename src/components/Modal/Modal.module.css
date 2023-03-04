@@ -9,9 +9,10 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 1200;
+    padding: 24px, 48px;
   }
   
   .modal {
-    max-width: calc(100vw - 96px);
-    max-height: calc(100vh - 48px);
+    max-width: calc(100vw - 48px);
+    max-height: calc(100vh- 24px);
   }
