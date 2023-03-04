@@ -5,9 +5,9 @@ const apiHandler = {
 
     async findPictures(request = '', page = 1) {
         const response = await axios.get(`https://pixabay.com/api/?q=${request}&page=${page}&${this.key}&image_type=photo&orientation=horizontal&per_page=12`);
-        console.log(request);
-        console.log(page);
-        console.log(response);
+        // console.log(request);
+        // console.log(page);
+        // console.log(response);
         return response;
     }
 }

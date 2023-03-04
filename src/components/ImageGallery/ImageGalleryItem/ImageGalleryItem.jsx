@@ -5,12 +5,16 @@ class ImageGalleryItem extends Component {
   render() {
     return (
       <li className="gallery-item">
-        <img src="" alt="" />
+        <img src={this.props.smallpic} alt={'picture #' + this.props.id} />
       </li>
     );
   }
 }
 
-ImageGalleryItem.propTypes = {};
+ImageGalleryItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  smallpic: PropTypes.string.isRequired,
+  largepic: PropTypes.string.isRequired,
+};
 
 export { ImageGalleryItem };
