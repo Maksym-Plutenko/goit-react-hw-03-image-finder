@@ -34,12 +34,16 @@ class App extends Component {
   };
 
   morePictures = async () => {
+    this.setState({
+      isLoading: true,
+    });
     const newPage = this.state.page + 1;
     const response = await apiHandler.findPictures(this.state.request, newPage);
     const newPictures = [...this.state.pictures, ...response.data.hits];
     this.setState({
       pictures: newPictures,
       page: newPage,
+      isLoading: false,
     });
   };
 
@@ -71,12 +75,8 @@ class App extends Component {
         }}
       >
         <Searchbar onSubmit={this.findPictures} />
-
-        {this.state.isLoading ? (
-          <Loader />
-        ) : (
-          <ImageGallery pictures={this.state.pictures} onClick={this.modalOn} />
-        )}
+        <ImageGallery pictures={this.state.pictures} onClick={this.modalOn} />
+        {this.state.isLoading && <Loader />}
 
         {this.state.pictures.length > 0 && (
           <Button onClick={this.morePictures} />
