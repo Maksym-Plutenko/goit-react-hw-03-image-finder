@@ -14,9 +14,9 @@ class App extends Component {
     isLoading: false,
   };
 
-  async getPic() {
-    await apiHandler.findPictures('cat', 1);
-  }
+  // async getPic() {
+  //   await apiHandler.findPictures('cat', 1);
+  // }
 
   findPictures = async request => {
     const requestTrimmed = request.trim();
@@ -50,10 +50,15 @@ class App extends Component {
         style={{
           display: 'flex',
           flexDirection: 'column',
+          gap: 16,
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
+          // display: 'grid',
+          // gridTemplateColumns: 1,
+          // gridGap: 16,
+          // paddingBottom: 24,
         }}
         // onClick={this.getPic}
       >
