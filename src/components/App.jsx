@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { apiHandler } from '../utilites/api';
 import { Searchbar } from './Searchbar/Searchbar';
 import {ImageGallery} from './ImageGallery/ImageGallery';
+import {Loader} from './Loader/Loader';
 
 class App extends Component {
   state = {
@@ -17,7 +18,7 @@ class App extends Component {
 
   findPictures = async request => {
     const requestTrimmed = request.trim();
-    console.log(requestTrimmed);
+    // console.log(requestTrimmed);
     if (requestTrimmed) {
       this.setState({
         page: 1,
@@ -29,6 +30,7 @@ class App extends Component {
       // console.log(response.data.hits);
       this.setState({
         pictures: response.data.hits,
+        isLoading: false,
       });
     }
   };
@@ -47,7 +49,8 @@ class App extends Component {
         // onClick={this.getPic}
       >
         <Searchbar onSubmit={this.findPictures} />
-        <ImageGallery pictures={this.state.pictures}/>
+        {this.state.isLoading ? (<Loader />) : <ImageGallery pictures={this.state.pictures} />}
+        
       </div>
     );
   }
