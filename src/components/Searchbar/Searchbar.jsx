@@ -19,6 +19,9 @@ class Searchbar extends Component {
   submitHandler = evt => {
     evt.preventDefault();
     this.props.onSubmit(this.state.request);
+    this.setState({
+      request: '',
+    });
   };
 
   render() {
